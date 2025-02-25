@@ -1,14 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="implementacionemergencia.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="479.0" prefWidth="669.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="implementacionemergencia.FXMLDocumentController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+      <Pane layoutY="106.0" prefHeight="406.0" prefWidth="728.0" style="-fx-background-color: #b5e7f3;">
+         <children>
+            <TextArea layoutX="481.0" layoutY="57.0" prefHeight="305.0" prefWidth="218.0" />
+            <TextField layoutX="173.0" layoutY="66.0" prefHeight="31.0" prefWidth="196.0" />
+            <TextField layoutX="184.0" layoutY="109.0" />
+            <TextField layoutX="248.0" layoutY="152.0" prefHeight="31.0" prefWidth="122.0" />
+            <Label layoutX="42.0" layoutY="71.0" text="Nivel Prioridad" />
+            <Label layoutX="42.0" layoutY="114.0" text="Tipo de Emergencia" />
+            <Label layoutX="38.0" layoutY="157.0" text="Tiempo Estimado de Atención " />
+         </children>
+      </Pane>
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Pane prefHeight="106.0" prefWidth="728.0" style="-fx-background-color: #62d5f1;">
+         <children>
+            <Label layoutX="243.0" layoutY="39.0" text="SISTEMA DE EMERGENCIAS" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+        <Button fx:id="button" layoutX="109.0" layoutY="393.0" onAction="#handleButtonAction" text="´Procesar" />
+      <Button layoutX="269.0" layoutY="393.0" mnemonicParsing="false" text="Almacenar" />
     </children>
 </AnchorPane>
