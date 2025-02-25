@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="479.0" prefWidth="669.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="implementacionemergencia.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="479.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="implementacionemergencia.FXMLDocumentController">
     <children>
       <Pane layoutY="106.0" prefHeight="406.0" prefWidth="728.0" style="-fx-background-color: #b5e7f3;">
          <children>
@@ -30,7 +30,7 @@
             </Label>
          </children>
       </Pane>
-        <Button fx:id="button" layoutX="109.0" layoutY="393.0" onAction="#handleButtonAction" text="´Procesar" />
+        <Button fx:id="button" layoutX="109.0" layoutY="393.0" onAction="#handleButtonAction" text="Procesar" />
       <Button layoutX="269.0" layoutY="393.0" mnemonicParsing="false" text="Almacenar" />
     </children>
 </AnchorPane>
