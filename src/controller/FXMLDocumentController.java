@@ -4,15 +4,18 @@
  */
 package controller;
 
-import cola.Cola;
-import cola.OperacionesCola;
-import data.Emergencia;
+
+import Cola.Cola;
+import Data.Emergencia;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 /**
  *
@@ -23,15 +26,53 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label label;
     
+    
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private TextField txtNiveLPrioridad;
+    
+    @FXML
+    private TextField txtTipoEmergencia;
+    
+     @FXML
+    private TextField txtTiempoEstimadoAtencion;
+    
+    @FXML
+    private TextArea textAreaMostrar;
+    
+    
+    Cola<Emergencia> colaEmergencia;
+    
+    
+    @FXML
+    private void procesarEmergencia(ActionEvent event) {
+        
+        String tipoE=txtTipoEmergencia.getText();
+        
+        int nivelP = Integer.parseInt(txtNiveLPrioridad.getText());
+        int tiempoA = Integer.parseInt(txtTiempoEstimadoAtencion.getText());
+       
+        
+        Emergencia emergencia= new Emergencia(tipoE, tiempoA, nivelP);
+        colaEmergencia.encolar(emergencia);
+    }
+    
+    
+    @FXML
+    private void RemoverCola(ActionEvent event) {
+        colaEmergencia.desencolar(); 
+    }
+    
+    
+    @FXML
+    private void MostrarCola(ActionEvent event) {
+        
+        textAreaMostrar.setText(colaEmergencia.toString());
+        
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        colaEmergencia = new Cola<>();
     }    
     
 }
