@@ -6,7 +6,7 @@ package controller;
 
  
 import Cola.Cola;
-import Data.Emergencia;
+import Data.Emergencia; 
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
