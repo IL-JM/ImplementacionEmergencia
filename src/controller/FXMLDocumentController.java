@@ -24,7 +24,7 @@ import javafx.scene.text.Text;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Label label;
+    private Label titulo;
     
     
     @FXML
@@ -47,27 +47,52 @@ public class FXMLDocumentController implements Initializable {
     private void procesarEmergencia(ActionEvent event) {
         
         String tipoE=txtTipoEmergencia.getText();
-        
         int nivelP = Integer.parseInt(txtNiveLPrioridad.getText());
         int tiempoA = Integer.parseInt(txtTiempoEstimadoAtencion.getText());
-       
         
-        Emergencia emergencia= new Emergencia(tipoE, tiempoA, nivelP);
-        colaEmergencia.encolar(emergencia);
-    }
+        // Comprobar que la prioridad está entre 1 y 10
+            if (nivelP < 1 || nivelP > 10 || tiempoA <= 0) {
+                textAreaMostrar.setText("Prioridad debe estar entre 1 y 10, y el tiempo debe ser mayor a 0.");
+                return;
+            }
+            Emergencia emergencia= new Emergencia(tipoE, nivelP);
+            
+            colaEmergencia.encolar(emergencia);
+            
+            txtTipoEmergencia.clear();
+            txtNiveLPrioridad.clear();
+            txtTiempoEstimadoAtencion.clear();
+            
+            MostrarCola();
+        } catch (NumberFormatException e) {
+            textAreaMostrar.setText("Error: Prioridad y tiempo deben ser valores numéricos.");
+        }
     
     
     @FXML
     private void RemoverCola(ActionEvent event) {
-        colaEmergencia.desencolar(); 
+        if (colaEmergencia.estaVacia()) {
+            textAreaMostrar.setText("⚠️ No hay emergencias en la cola.");
+            return;
+        }
+        
+        Emergencia atendida = colaEmergencia.desencolar();
+        textAreaMostrar.setText("Atendida: " + atendida.toString());
+
+        // Actualizar la vista de la cola
+        MostrarCola();
     }
+        
     
     
     @FXML
     private void MostrarCola(ActionEvent event) {
         
-        textAreaMostrar.setText(colaEmergencia.toString());
-        
+       if (colaEmergencia.estaVacia()) {
+            textAreaMostrar.setText("No hay emergencias pendientes.");
+        } else {
+            textAreaMostrar.setText("Emergencias en cola:\n" + colaEmergencia.toString());
+        }
     }
     
     @Override
